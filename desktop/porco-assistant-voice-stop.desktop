@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Porco Assistant — Stop speech
+Comment=Stop current speech (agent voice mode stays on if enabled)
+Exec=porco-assistant-voice-stop.sh
+Icon=media-playback-stop
+Terminal=false
+Categories=Utility;Audio;

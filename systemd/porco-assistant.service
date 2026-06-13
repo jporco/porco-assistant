@@ -1,0 +1,27 @@
+[Unit]
+Description=Porco Assistant — voice control for Cursor
+After=network-online.target sound.target graphical-session.target
+Wants=network-online.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Nice=10
+TimeoutStopSec=10
+WorkingDirectory=@INSTALL_DIR@
+Environment=PYTHONPATH=@INSTALL_DIR@/src
+Environment=PORCO_ASSISTANT_HOME=@INSTALL_DIR@
+Environment=DISPLAY=:0
+Environment=XDG_RUNTIME_DIR=/run/user/%U
+Environment=DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/%U/bus
+Environment=QT_QPA_PLATFORM=xcb
+EnvironmentFile=-@INSTALL_DIR@/config.env
+ExecStartPre=/bin/bash -c 'for i in $(seq 1 90); do pgrep -x plasmashell >/dev/null || pgrep -x xfce4-session >/dev/null || pgrep -x gnome-session >/dev/null && exit 0; sleep 1; done; exit 0'
+ExecStart=@INSTALL_DIR@/.venv/bin/python -m porco_assistant
+Restart=on-failure
+RestartSec=15
+StandardOutput=append:@INSTALL_DIR@/porco-assistant.log
+StandardError=append:@INSTALL_DIR@/porco-assistant.log
+
+[Install]
+WantedBy=graphical-session.target

@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Porco Assistant — Enable agent voice
+Comment=Read Cursor agent replies aloud until disabled
+Exec=porco-assistant-voice-on.sh
+Icon=audio-volume-high
+Terminal=false
+Categories=Utility;Audio;

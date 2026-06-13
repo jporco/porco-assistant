@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Porco Assistant — Disable agent voice
+Comment=Stop reading Cursor agent replies aloud
+Exec=porco-assistant-voice-off.sh
+Icon=audio-volume-muted
+Terminal=false
+Categories=Utility;Audio;
